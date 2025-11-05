@@ -5,7 +5,7 @@ def dayOne():
     rules = []
     #read
     first = True
-    with open("Day1/1_2.txt", 'r') as file:
+    with open("Day1/1_1.txt", 'r') as file:
         for line in file:
             if line == '\n':
                 first = False
@@ -35,7 +35,7 @@ def dayOne2():
     rules = []
     #read
     first = True
-    with open("Day1/1_3.txt", 'r') as file:
+    with open("Day1/1_2.txt", 'r') as file:
         for line in file:
             if line == '\n':
                 first = False
@@ -60,7 +60,7 @@ def dayOne3():
     rules = []
     #read
     first = True
-    with open("Day1/1_4.txt", 'r') as file:
+    with open("Day1/1_3.txt", 'r') as file:
         for line in file:
             if line == '\n':
                 first = False
