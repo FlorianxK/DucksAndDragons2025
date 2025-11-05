@@ -1,0 +1,3 @@
+Raelmal,Irynnixis,Eltonar,Calophis,Garxel,Vaelluth,Auredren,Balthvynar,Nyrixeldrin,Tharirin,Marnar,Selkkris,Ilmarnoris,Kynzral,Sarnkris,Norakaes,Tazvyr,Tharisis,Balkryth,Vaelaelor
+
+L11,R18,L8,R12,L15,R16,L7,R7,L11,R19,L5,R12,L5,R11,L5,R7,L5,R5,L5,R16,L18,R14,L12,R16,L7,R7,L16,R16,L5
