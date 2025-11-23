@@ -1,0 +1,27 @@
+Xyrzyth,Lornquor,Malther,Xarasis,Zraalzyth,Quiroryx,Zraaltor,Naldorath,Xarquor,Lornasis,Naldasis,Brylther,Quirorath,Karthorath,Zraalorath,Xyrorath,Bryleon,Xarorath,Karthasis,Zraalquor,Quireon,Zraalroth,Naldeon,Vornther,Maleon,Zraalther,Maloryx,Malzyth,Brylorath,Lornorath,Kartheon,Lorneon,Karthzyth,Naldoryx,Zraalnixis,Quirroth,Brylquor,Xyreon,Maltor,Naldquor,Vornoryx,Vorntor,Zraaloryx,Naldzyth,Zraaleon,Quirnixis,Brylzyth,Malroth,Lornther,Naldther,Lornnixis,Quirquor,Xyrtor,Lornoryx,Bryloryx,Naldnixis,Brylroth,Vornorath,Brylasis,Quirtor,Lorntor,Malnixis,Naldtor,Lornroth,Xarroth,Karthtor,Lornzyth,Naldroth,Quirasis,Xarnixis,Xyrquor,Xyrroth,Bryltor,Xyrnixis,Vornroth,Karthquor,Quirzyth,Zraalasis,Brylnixis,Vornnixis,Vornquor,Malasis,Quirther,Xyrasis,Malquor,Vorneon,Karthroth,Xarzyth,Xartor,Karthoryx,Malorath,Xarther,Vornzyth,Karthnixis,Vornasis,Karthther,Xyroryx,Xareon,Xyrther,Xaroryx
+
+t > o,h
+V > o
+B > r
+q > u
+L > o
+Z > r
+l > t,z,o,e,q,a,n,r,d
+s > i
+r > a,v,y,o,z,t,e,q,n,r
+i > s,x,r
+N > a
+d > z,o,t,e,q,a,n,r
+K > a
+u > o,v
+a > a,l,t,s,v
+z > y
+h > e,z,o,t,q,a,n,r
+Q > u
+n > i,z,o,t,e,q,a,n,r
+e > r,o
+y > l,t,x,v
+x > i
+o > r,n,t,v
+X > a,y
+M > a

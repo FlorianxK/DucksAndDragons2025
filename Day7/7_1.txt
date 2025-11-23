@@ -1,0 +1,15 @@
+Nyilor,Balilor,Jalxar,Balxar,Balendris,Jalilor,Nyendris,Jalendris,Nyxar
+
+y > e,b
+J > a
+e > n
+a > b,r
+x > a
+d > r
+N > y
+r > i
+l > e,i,o,x
+n > d
+o > r
+i > s,l
+B > a
