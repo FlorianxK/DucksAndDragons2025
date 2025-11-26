@@ -1,4 +1,5 @@
 from collections import deque
+from functools import cache
 from typing import *
 
 def dayTen():
@@ -38,13 +39,13 @@ def dayTen2():
     res = []
     #read
     arr = []
-    sheeps = set()
+    sheep = set()
     with open("Day10/10_2.txt", 'r') as file:
         i = 0
         for line in file:
             for j in range(len(line)):
                 if line[j] == 'S':
-                    sheeps.add( (i,j) )
+                    sheep.add( (i,j) )
             i += 1
             arr.append(list(line.rstrip()))
 
@@ -59,23 +60,23 @@ def dayTen2():
             x,y = level.pop()
             for dx,dy in [(2,-1),(2,1),(-2,-1),(-2,1),(1,2),(-1,2),(1,-2),(-1,-2)]:
                 nx,ny = x+dx,y+dy
-                if nx < 0 or nx >= m or ny < 0 or nx >= n: continue
+                if nx < 0 or nx >= m or ny < 0 or ny >= n: continue
                 nextLevel.add( (nx,ny) )
-                if (nx,ny) in sheeps and arr[nx][ny] != '#':
+                if (nx,ny) in sheep and arr[nx][ny] != '#':
                     eaten += 1
-                    sheeps.remove( (nx,ny) )
+                    sheep.remove( (nx,ny) )
         
         #move sheep
-        nextSheeps = set()
-        for x,y in sheeps:
+        nextSheep = set()
+        for x,y in sheep:
             nx = x+1
             if nx >= m: continue
             if (nx,y) in nextLevel and arr[nx][y] != '#':
                 eaten += 1
             else:
-                nextSheeps.add( (nx,y) )
+                nextSheep.add( (nx,y) )
 
-        sheeps = nextSheeps
+        sheep = nextSheep
         level = nextLevel
         res.append(eaten)
         move += 1
@@ -83,13 +84,59 @@ def dayTen2():
     return sum(res)
 
 def dayTen3():
-    pass
+    #read
+    arr = []
+    sheep = []
+    dragon = (0,0)
+    with open("Day10/10_3.txt", 'r') as file:
+        i = 0
+        for line in file:
+            for j in range(len(line)):
+                if line[j] == 'S':
+                    sheep.append( (i,j) )
+                elif line[j] == 'D':
+                    dragon = (i,j)
+            i += 1
+            arr.append(list(line.rstrip()))
 
+    m,n = len(arr),len(arr[0])
+    sheep = tuple(sheep)
+
+    @cache
+    def count(sheep,dragon,turn="sheep"):
+        if turn == "sheep":
+            if len(sheep):
+                total = 0
+                moved = 0
+                for i, (x,y) in enumerate(sheep):
+                    #escape
+                    if x == m-1:
+                        moved += 1
+                    elif arr[x+1][y] == '#' or dragon != (x+1,y):
+                        moved += 1
+                        nextSheep = (*sheep[:i],(x+1,y),*sheep[i+1:])
+                        total += count( nextSheep,dragon,turn="dragon" )
+                if moved == 0: return count(sheep,dragon,turn="dragon")
+                return total
+            else:
+                return 1
+        if turn == "dragon":
+            total = 0
+            for dx,dy in [(2,-1),(2,1),(-2,-1),(-2,1),(1,2),(-1,2),(1,-2),(-1,-2)]:
+                x,y = dragon
+                nx,ny = x+dx,y+dy
+                if nx < 0 or nx >= m or ny < 0 or ny >= n: continue
+                nextSheep = tuple( (sx,sy) for sx,sy in sheep if arr[sx][sy] == '#' or (sx,sy) != (nx,ny) )
+                total += count( nextSheep , (nx,ny) , turn="sheep" )
+            return total
+
+    return count(sheep,dragon)
+    
 def main():
     print("Hallo")
-    #print(dayTen(), "ist die Lösung von Teil 1")
+    print(dayTen(), "ist die Lösung von Teil 1")
     print(dayTen2(), "ist die Lösung von Teil 2")
-    #print(dayTen3(), "ist die Lösung von Teil 3")
+    print(dayTen3(), "ist die Lösung von Teil 3")
 
 if __name__=="__main__":
     main()
