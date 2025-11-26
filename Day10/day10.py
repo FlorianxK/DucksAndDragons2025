@@ -35,70 +35,52 @@ def dayTen():
 
 def dayTen2():
     moves = 20
-    res = 0
+    res = []
     #read
     arr = []
-    sheeps = []
+    sheeps = set()
     with open("Day10/10_2.txt", 'r') as file:
         i = 0
         for line in file:
             for j in range(len(line)):
                 if line[j] == 'S':
-                    sheeps.append( (i,j) )
-
+                    sheeps.add( (i,j) )
             i += 1
             arr.append(list(line.rstrip()))
 
     m,n = len(arr),len(arr[0])
     dragon = (m//2,n//2)
-    level = deque([dragon])
-    eaten = 0
-    seen = set()
+    level = set([dragon])
     move = 1
     while move <= moves:
-
-        darr = [['.']*n for _ in range(m)]
-        nextlevel = deque([])
+        eaten = 0
+        nextLevel = set()
         while level:
-            curr = level.popleft()
-            x,y = curr
+            x,y = level.pop()
             for dx,dy in [(2,-1),(2,1),(-2,-1),(-2,1),(1,2),(-1,2),(1,-2),(-1,-2)]:
                 nx,ny = x+dx,y+dy
-
-                if nx < 0 or nx >= m or ny < 0 or nx >= n and (nx,ny) not in seen: continue
-
-                seen.add( (nx,ny) )
-                darr[nx][ny] = 'X'
-                nextlevel.append((nx,ny))
-
-        level = nextlevel
-
-        #sheep 0
-        if move == 1:
-            nextSheeps = []
-            for x,y in sheeps:
-                if darr[x][y] == 'X':
+                if nx < 0 or nx >= m or ny < 0 or nx >= n: continue
+                nextLevel.add( (nx,ny) )
+                if (nx,ny) in sheeps and arr[nx][ny] != '#':
                     eaten += 1
-                else:
-                    nextSheeps.append( (x,y) )
-            sheeps = nextSheeps
-
-        nextSheeps = []
+                    sheeps.remove( (nx,ny) )
+        
+        #move sheep
+        nextSheeps = set()
         for x,y in sheeps:
             nx = x+1
             if nx >= m: continue
-            
-            if darr[nx][y] == 'X' and arr[nx][y] != '#':
+            if (nx,y) in nextLevel and arr[nx][y] != '#':
                 eaten += 1
             else:
-                nextSheeps.append( (nx,y) )
-        sheeps = nextSheeps
+                nextSheeps.add( (nx,y) )
 
-        print(eaten)
-        res += eaten
+        sheeps = nextSheeps
+        level = nextLevel
+        res.append(eaten)
         move += 1
 
-    return res
+    return sum(res)
 
 def dayTen3():
     pass
