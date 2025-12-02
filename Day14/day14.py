@@ -91,66 +91,56 @@ def dayFourteen2():
 def dayFourteen3():
     #read
     pattern = []
-    with open("Day14/14.txt", 'r') as file:
+    with open("Day14/14_3.txt", 'r') as file:
         for line in file:
             pattern.append(list(line.rstrip()))
 
     rounds = 1000000000
     n = 34
     patternI = len(pattern)
-    dir = [(1,1),(-1,-1),(1,-1),(-1,1)]
+    start = (n-patternI)//2
+    targeton = {(i,j) for i,line in enumerate(pattern,start) for j,char in enumerate(line,start) if char=='#'}
+    targetoff = {(i,j) for i,line in enumerate(pattern,start) for j,char in enumerate(line,start) if char=='.'}
 
-    start = [ ['.']*n for _ in range(n) ]
+    grid = set()
 
-    def oneRound(arr):
-        nextArr = [ ['0']*n for _ in range(n) ]
-        active = 0
-        found = True
-        l = n//2-patternI//2
-        r = l+patternI-1
+    def neighbours(coord):
+        x,y = coord
+        return {(x-1,y-1),(x-1,y+1),(x,y),(x+1,y-1),(x+1,y+1)}
 
+    def oneRound(grid):
+        output = set()
         for i in range(n):
             for j in range(n):
-                activeNeigh = 0
-                for dx,dy in dir:
-                    nx,ny = i+dx,j+dy
-                    if 0<=nx<n and 0<=ny<n:
-                        if arr[nx][ny] == '#':
-                            activeNeigh += 1
+                if len(set.intersection(neighbours((i,j)),grid))%2==0:
+                    output.add((i,j))
+        return output
 
-                if arr[i][j] == '#':
-                    if activeNeigh % 2 != 0:
-                        nextArr[i][j] = '#'
-                        active += 1
-                    else:
-                        nextArr[i][j] = '.'
+    grids = []
+    while True:
+        grids.append(grid)
+        grid = oneRound(grid)
+        if grid in grids:
+            cyclestart = grids.index(grid)
+            cycleend = len(grids)
+            cyclelength = cycleend-cyclestart
+            break
 
-                elif arr[i][j] == '.':
-                    if activeNeigh % 2 == 0:
-                        nextArr[i][j] = '#'
-                        active += 1
-                    else:
-                        nextArr[i][j] = '.'
-
-                #pattern
-                if l<=i<=r and l<=j<=r:
-                    if arr[i][j] != pattern[i-l][j-l]:
-                        found = False
-
-        return nextArr,active,found
+    counts = []
+    for i,grid in enumerate(grids):
+        if set.intersection(grid,targeton) == targeton and not set.intersection(grid,targetoff):
+            counts.append([i,len(grid)])
 
     res = 0
-    for k in range(1,rounds+1):
-        start,active,found = oneRound(start)
-        if found:
-            res += active
+    for i,count in counts:
+        res += ((rounds-i)//cyclelength+1)*count
 
-            print(k-1)
+    return res
 
 def main():
     print("Hallo")
-    #print(dayFourteen(), "ist die Lösung von Teil 1")
-    #print(dayFourteen2(), "ist die Lösung von Teil 2")
+    print(dayFourteen(), "ist die Lösung von Teil 1")
+    print(dayFourteen2(), "ist die Lösung von Teil 2")
     print(dayFourteen3(), "ist die Lösung von Teil 3")
 
 if __name__=="__main__":
