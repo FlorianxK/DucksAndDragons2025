@@ -1,0 +1,76 @@
+Plant 1 with thickness 1:
+- free branch with thickness 1
+
+Plant 2 with thickness 1:
+- free branch with thickness 1
+
+Plant 3 with thickness 1:
+- free branch with thickness 1
+
+Plant 4 with thickness 1:
+- free branch with thickness 1
+
+Plant 5 with thickness 1:
+- free branch with thickness 1
+
+Plant 6 with thickness 1:
+- free branch with thickness 1
+
+Plant 7 with thickness 1:
+- free branch with thickness 1
+
+Plant 8 with thickness 1:
+- free branch with thickness 1
+
+Plant 9 with thickness 1:
+- free branch with thickness 1
+
+Plant 10 with thickness 48:
+- branch to Plant 6 with thickness 22
+- branch to Plant 5 with thickness 29
+- branch to Plant 4 with thickness 31
+
+Plant 11 with thickness 25:
+- branch to Plant 2 with thickness 45
+- branch to Plant 7 with thickness 41
+- branch to Plant 3 with thickness 19
+- branch to Plant 8 with thickness 46
+- branch to Plant 4 with thickness 47
+- branch to Plant 5 with thickness 20
+
+Plant 12 with thickness 36:
+- branch to Plant 2 with thickness 26
+- branch to Plant 7 with thickness 12
+
+Plant 13 with thickness 44:
+- branch to Plant 6 with thickness 17
+- branch to Plant 5 with thickness 16
+
+Plant 14 with thickness 43:
+- branch to Plant 8 with thickness 25
+- branch to Plant 2 with thickness 12
+
+Plant 15 with thickness 36:
+- branch to Plant 10 with thickness 58
+- branch to Plant 11 with thickness 67
+- branch to Plant 13 with thickness 27
+
+Plant 16 with thickness 93:
+- branch to Plant 13 with thickness 13
+- branch to Plant 14 with thickness 33
+
+Plant 17 with thickness 27:
+- branch to Plant 10 with thickness 72
+- branch to Plant 13 with thickness 33
+- branch to Plant 11 with thickness 42
+
+Plant 18 with thickness 95:
+- branch to Plant 11 with thickness 18
+- branch to Plant 14 with thickness 39
+- branch to Plant 13 with thickness 32
+
+Plant 19 with thickness 1:
+- branch to Plant 15 with thickness 72
+- branch to Plant 16 with thickness 18
+- branch to Plant 17 with thickness 88
+- branch to Plant 18 with thickness 38
